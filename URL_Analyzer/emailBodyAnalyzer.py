@@ -1,4 +1,4 @@
-import pandas as pd
+from pandas import read_csv
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -7,7 +7,7 @@ file_path=r'D:\SEM 4\COMPUTER NETWORKS\CN PACKAGE\URL_Analyzer\Phishing_Email.cs
 
 def report_body(email_body,email_address,report):
     def train_model(csv_file):
-        df = pd.read_csv(csv_file, nrows=3000)
+        df = read_csv(csv_file, nrows=3000)
         df['Email Text'] = df['Email Text'].fillna('')
         X = df['Email Text']
         y = df['Email Type']
