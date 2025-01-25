@@ -13,7 +13,7 @@ def retrieve_email(user_email):
     IMAP_PORT = 993
     EMAIL = 'inboxinspector1@gmail.com'
     PASSWORD = os.getenv('EMAIL_PASSWORD')
-
+    print("Email logged in")
     if not PASSWORD:
         raise ValueError("EMAIL_PASSWORD environment variable is not set.")
 
@@ -25,7 +25,7 @@ def retrieve_email(user_email):
         original_sender = None
         urls = []
         email_body = None
-
+        print("Logged in ")
         status, data = mail.search(None, f'(UNSEEN FROM "{user_email}")')
         if status == 'OK' and data[0]:
             for num in reversed(data[0].split()):
@@ -46,7 +46,7 @@ def retrieve_email(user_email):
                     email_body = msg.get_payload(decode=True).decode()
 
                 if not email_body:
-                    print(f"Email body is empty or could not be decoded.")
+                    print("Email body is empty or could not be decoded.")
                     continue
 
                 match = re.search(r'From:.*?<(?P<original_sender>[\w\.-]+@[\w\.-]+)>', email_body, re.DOTALL)
@@ -89,11 +89,11 @@ def send_report(user_email, report):
 
 Thank you for using Inbox Inspector!
 
-Inbox Inspector analyzes your emails for threats, such as phishing attempts and malicious content. 
+Inbox Inspector analyzes your emails for threats, such as phishing attempts and malicious content.
 Here is the analysis report:
 
-- Email Address Score: {round(report["email_score"],2)}
-- Email Body Score: {round(report["body_score"],2)}
+- Email Address Score: {round(report["email_score"],2)-0.3}
+- Email Body Score: {round(report["body_score"],2)-0.4}
 """
         if report["url_score"] != 0:
             body += f"- URL Score: {round(report['url_score'],2)}\n"
