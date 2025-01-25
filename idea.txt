@@ -1,8 +1,0 @@
-WEBpage-> Make the user forward their suspicious looking email to dedicated gmail imap server
-spam detector machine learning model classifies if it is possibly spam
-Email domain analyzer analysis email address
-If URL sttachment then URL also analyzed and threat is classified
-~1 min for analysis so loading page in web shows phishing facts
-Display the Analysis Result and recommend action to be taken
-Feedback from user on whether prediction was satisfactory and make the model learn from mistakes/correct.
-Go back to home page or exit 
