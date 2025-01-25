@@ -2,8 +2,6 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report
-from sklearn.metrics import accuracy_score
 from URL_Analyzer import emailBodyAnalyzer
 file_name = r'D:\SEM 4\COMPUTER NETWORKS\CN PACKAGE\URL_Analyzer\malicious_phish.csv'
 

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import threading
 import imap_server
-import queue
 
 app = Flask(__name__)
 
