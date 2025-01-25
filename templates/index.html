@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox Inspector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #e9d2ff, #ffd3e7);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgb(247, 184, 242);
+            padding: 20px;
+            text-align: center;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .logo{
+            width: 70px;
+            opacity: 0.85;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        p {
+            max-width: 700px;
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            max-width: 300px;
+            margin-right: 20px;
+            margin-top: 35px;
+        }
+        input[type="email"]:focus {
+            border-color: #99c6f7;
+            box-shadow: 0 0 5px rgba(193, 138, 252, 0.6);
+        }
+        input[type="submit"] {
+            background-color: #b286fa;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #cdb3f4;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1><img class="logo" src="{{ url_for('static', filename='Inspector.jpg') }}" alt="Logo"> Inbox Inspector</h1>
+    <p>Inbox Inspector is a tool that helps you detect and report suspicious emails. Simply forward your suspicious emails to <strong><a href="https://mail.google.com/mail/?view=cm&fs=1&to=inboxinspector1@gmail.com" target="_blank">inboxinspector1@gmail.com</a></strong> to analyze them.</p>
+    <p>Enter your email address from which you have forwarded the mail.<br>After forwarding please click the Button below!</p>
+    <form id="confirmForm" method="post" action="/confirm_forwarding">
+        <input type="email" name="user_email" id="user_email" placeholder="Enter your email address" required>
+        <input type="submit" value="Confirm">
+    </form>
+</div>
+</body>
+</html>

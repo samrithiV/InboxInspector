@@ -1,0 +1,52 @@
+import imaplib
+import email
+
+
+
+
+EMAIL = 'inboxinspector1@gmail.com'
+PASSWORD = 'lunz byrz muow neci'
+
+
+
+
+
+
+
+
+
+
+def retrieve_emails(email_address, password):
+    # Connect to Gmail IMAP server
+    mail = imaplib.IMAP4_SSL('imap.gmail.com')
+
+    # Login to the account
+    mail.login(email_address, password)
+
+    # Select the INBOX folder
+    mail.select('inbox')
+
+    # Search for emails
+    status, data = mail.search(None, 'ALL')
+
+    # Loop through the email IDs
+    for num in data[0].split():
+        # Fetch the email by ID
+        status, data = mail.fetch(num, '(RFC822)')
+        raw_email = data[0][1]
+
+        # Parse the raw email
+        msg = email.message_from_bytes(raw_email)
+
+        # Print the email subject to the terminal
+        print('Subject:', msg['subject'])
+
+    # Close the connection
+    mail.close()
+    mail.logout()
+
+if __name__ == "__main__":
+    # Test with your Gmail email address and password
+    email_address = "vsamrithi@gmail.com"
+    password = "juau adsz luqj vxdd"  # Replace with your actual Gmail app password
+    retrieve_emails(email_address, password)
