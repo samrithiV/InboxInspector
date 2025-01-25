@@ -92,11 +92,11 @@ Thank you for using Inbox Inspector!
 Inbox Inspector analyzes your emails for threats, such as phishing attempts and malicious content. 
 Here is the analysis report:
 
-- Email Address Score: {report["email_score"]}
-- Email Body Score: {report["body_score"]}
+- Email Address Score: {round(report["email_score"],2)}
+- Email Body Score: {round(report["body_score"],2)}
 """
         if report["url_score"] != 0:
-            body += f"- URL Score: {report['url_score']}\n"
+            body += f"- URL Score: {round(report['url_score'],2)}\n"
 
         final_score = 0.5 * report["body_score"] + 0.3 * report["email_score"] + 0.2 * report["url_score"]
         body += f"\nYour email has been classified as: "
